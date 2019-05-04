@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Disparo.gd" type="Script" id=1]
+[ext_resource path="res://Imagenes/j.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.64752
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "bala",
+"speed": 5.0
+} ]
+
+[node name="Disparo" type="RigidBody2D"]
+position = Vector2( 496.24, 279.007 )
+mass = 0.00102041
+gravity_scale = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.039, 0.039 )
+frames = SubResource( 2 )
+animation = "bala"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

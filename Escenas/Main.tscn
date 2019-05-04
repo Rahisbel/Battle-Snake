@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
+[ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Escenas/Disparo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 22.7416, -6.5219, 0, 0, 0, 0, 1016.27, -6.5219, 0, 0, 0, 0, 1016.27, 594.921, 0, 0, 0, 0, 1.10695, 594.921 )
+}
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+Enemigo = ExtResource( 2 )
+Disparo = ExtResource( 3 )
+
+[node name="Jugador" parent="." instance=ExtResource( 4 )]
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 531.159, 277.857 )
+
+[node name="Path2D" type="Path2D" parent="."]
+scale = Vector2( 1.00359, 0.99693 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 22.7416, -6.5219 )
+
+[node name="TimerEnemigo" type="Timer" parent="."]
+
+[node name="Inicio" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Persecusion" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
+[connection signal="hit" from="Jugador" to="." method="game_over"]
+[connection signal="localizacion" from="Jugador" to="." method="_on_Jugador_localizacion"]
+[connection signal="timeout" from="TimerEnemigo" to="." method="_on_TimerEnemigo_timeout"]
+[connection signal="timeout" from="Inicio" to="." method="_on_Inicio_timeout"]
+[connection signal="timeout" from="Persecusion" to="." method="_on_Persecusion_timeout"]

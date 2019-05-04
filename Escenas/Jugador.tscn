@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Jugador.gd" type="Script" id=1]
+[ext_resource path="res://Imagenes/icon.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "jug",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 21.1063, 17.7475 )
+
+[node name="Jugador" type="Area2D"]
+position = Vector2( 534.394, 275.127 )
+gravity = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0.984375, 0.984375, 0.984375, 1 )
+scale = Vector2( 0.669832, 0.553886 )
+frames = SubResource( 1 )
+animation = "jug"
+playing = true
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Jugador_body_entered"]

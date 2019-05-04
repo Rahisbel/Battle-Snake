@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="Pared" type="StaticBody2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
