@@ -12,6 +12,6 @@ func _process(delta):
 	velocity = Vector2(0,speed).rotated(rotation)
 	position += velocity * delta
 
-func _on_VisibilityNotifier2D_screen_exited(): #Elimina los disparos al salir de la pantalla
-	queue_free()
+func _on_VisibilityNotifier2D_screen_exited(): 
+	queue_free() #Elimina los disparos al salir de la pantalla
 	

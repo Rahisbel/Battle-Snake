@@ -5,9 +5,7 @@ var score
 var maxEnem = 4
 var enemigos = []
 var cantEnemigos = 0
-var prueba = 0
-var speedE= 250 #Velocidad enemigo
-
+var speedE= 200 #Velocidad enemigo
 
 func _ready():
 	enemigos.resize(maxEnem)
@@ -19,7 +17,7 @@ func game_over():
     #$TimerEnemigo.stop()
     pass
 
-func _on_TimerEnemigo_timeout():
+func _on_TimerEnemigo_timeout(): # Movimiento del enemigo
 	if cantEnemigos < maxEnem :
 		$Path2D/PathFollow2D.set_offset(randi())
 		var enem = Enemigo.instance()
@@ -31,33 +29,30 @@ func _on_TimerEnemigo_timeout():
 		enem.rotation = direction
 		enem.linear_velocity = Vector2(rand_range(enem.min_speed, enem.max_speed), 0)
 		enem.linear_velocity = enem.linear_velocity.rotated(direction)
-		print(direction)
 		cantEnemigos+=1
 
-
 func new_game():
-    score = 0
-    $Jugador.start($Position2D.position)
-    $Inicio.start()
+	score = 0
+	$Jugador.start($Position2D.position)
+	$Inicio.start()
 
 func _on_Inicio_timeout():
-    $TimerEnemigo.start()
+	$TimerEnemigo.start()
 
 func _on_Jugador_disparo(direccion, localizacion,velocidad):
-    var b = Disparo.instance()
-    add_child(b)
-    b.rotation = direccion
-    b.position = localizacion
-    b.linear_velocity = velocidad * 3
+	var b = Disparo.instance()
+	add_child(b)
+	b.rotation = direccion
+	b.position = localizacion
+	b.linear_velocity = velocidad * 3
 
-func _on_Jugador_localizacion(posicion,direccion):
+func _on_Jugador_localizacion(posicion,direccion): # Persecusion
 	var a
 	var b
 	var porcA
 	var porcB
 	if cantEnemigos > 1:		
 		for j in enemigos:
-#			print(j.velocity)
 			if j != null:
 				a=posicion.y-j.position.y
 				b=posicion.x-j.position.x

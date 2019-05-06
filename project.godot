@@ -15,10 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Battle Snake"
 run/main_scene="res://Escenas/Main.tscn"
-config/icon="res://icon.png"
 
-[rendering]
+[display]
 
-environment/default_environment="res://default_env.tres"
+window/handheld/orientation="portrait"

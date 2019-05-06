@@ -27,7 +27,6 @@ func _process(delta):
         emit_signal("disparo", rotation, position,velocity)  
 
     if velocity.length() > 0:
-        #velocity = velocity.normalized() * speed
         $AnimatedSprite.play()
     else:
         $AnimatedSprite.stop()
