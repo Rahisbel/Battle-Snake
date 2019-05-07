@@ -1,11 +1,13 @@
 extends Area2D
 signal hit
 signal disparo(direccion,localizacion,velocidad)
+signal cuerpo(direccion,localizacion,velocidad)
 signal localizacion(posicion,direccion)
 
 export var speed = 250 # velocidad del jugador
 export (float) var velocidad_rot = 4.0
 var bala = preload("res://Escenas/Disparo.tscn")
+var cuerpo = preload("res://Escenas/Cuerpo.tscn")
 var screen_size  # tamaño de ventana
 var direccion_rot = 0
 var velocity 
@@ -22,7 +24,8 @@ func _process(delta):
         direccion_rot+= 1  
 
     if Input.is_action_pressed("ui_left"): # rotacion a la izq
-        direccion_rot-= 1   
+        direccion_rot-= 1  
+ 
     if Input.is_action_just_pressed("ui_up"):
         emit_signal("disparo", rotation, position,velocity)  
 
@@ -34,6 +37,7 @@ func _process(delta):
     rotation+=direccion_rot*velocidad_rot*delta
     position += velocity * delta
     emit_signal("localizacion",position,rotation)
+    emit_signal("cuerpo",rotation,position,velocity)
    
     # Evita que se salga de la pantalla
     position.x = clamp(position.x, 0, screen_size.x)
@@ -49,5 +53,6 @@ func start(pos): # cuando comience un juego nuevo
     position = pos
     show()
     $CollisionShape2D.disabled = false
+    
 
 

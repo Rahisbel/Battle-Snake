@@ -1,11 +1,14 @@
 extends Node
 export (PackedScene) var Enemigo
 export (PackedScene) var Disparo
+export (PackedScene) var Cuerpo
 var score
 var maxEnem = 4
 var enemigos = []
 var cantEnemigos = 0
 var speedE= 200 #Velocidad enemigo
+var body 
+var nivel =1
 
 func _ready():
 	enemigos.resize(maxEnem)
@@ -70,3 +73,16 @@ func _on_Jugador_localizacion(posicion,direccion): # Persecusion
 					j.linear_velocity = Vector2(-(speedE*(porcB/100)),-(speedE*(porcA/100)))
 				elif posicion.y < j.position.y && posicion.x > j.position.x:
 					j.linear_velocity = Vector2(speedE*(porcB/100),-(speedE*(porcA/100)))
+
+
+func _on_Jugador_cuerpo(direccion, localizacion, velocidad):
+	if nivel == 1:
+		print("1")
+	elif nivel ==2:
+		print("2")
+	elif nivel ==2:
+		print("3") 
+	elif nivel ==2:
+		print("4")
+	elif nivel ==2:
+		print("5")
