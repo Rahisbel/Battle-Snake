@@ -1,8 +1,8 @@
 extends Area2D
 signal hit
-signal disparo(direccion,localizacion,velocidad)
-signal cuerpo(direccion,localizacion,velocidad)
-signal localizacion(posicion,direccion)
+signal disparo(direccion,localizacion,velocidad) # información de jugador para disparo
+signal cuerpo(direccion,localizacion,velocidad) # Prueba, no hace nada por ahora
+signal localizacion(posicion,direccion) # información para la persecusion 
 
 export var speed = 250 # velocidad del jugador
 export (float) var velocidad_rot = 4.0
@@ -20,6 +20,7 @@ func _process(delta):
       # Velocidad del jugador
     velocity = Vector2(0,speed).rotated(rotation)
 
+	#esto es de prueba, se supone que hay que usar el touch
     if Input.is_action_pressed("ui_right"): # rotacion a la der
         direccion_rot+= 1  
 
@@ -27,7 +28,7 @@ func _process(delta):
         direccion_rot-= 1  
  
     if Input.is_action_just_pressed("ui_up"):
-        emit_signal("disparo", rotation, position,velocity)  
+        emit_signal("disparo", rotation, position,velocity) 
 
     if velocity.length() > 0:
         $AnimatedSprite.play()

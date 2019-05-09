@@ -19,8 +19,8 @@ func _process(delta):
 
 func _on_Enemigo_body_entered(body):
 	hide()
-	emit_signal("col")
-	$CollisionShape2D.set_deferred("disabled", true)
+	emit_signal("col") # colision del disparo con el enemigo
+	$CollisionShape2D.set_deferred("disabled", true) # esto evita que la señal se emita varias veces
 
 
 
