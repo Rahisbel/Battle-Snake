@@ -1,14 +1,16 @@
 extends Node
+
 export (PackedScene) var Enemigo
 export (PackedScene) var Disparo
 export (PackedScene) var Cuerpo
+
 var score
 var maxEnem = 4
-var enemigos = []
-var cantEnemigos = 0
-var speedE= 200 #Velocidad enemigo
+var enemigos = [] #vector de enemigos
+var cantEnemigos = 0 
+var speedE= 200  #Velocidad enemigo
 var body 
-var nivel =1
+var nivel = 1
 
 func _ready():
 	enemigos.resize(maxEnem)
@@ -16,9 +18,9 @@ func _ready():
 	new_game()
 
 func game_over():
-    #$ScoreTimer.stop()
-    #$TimerEnemigo.stop()
-    pass
+	#$ScoreTimer.stop()
+	#$TimerEnemigo.stop()
+	pass
 
 func _on_TimerEnemigo_timeout(): # Movimiento básico del enemigo
 	if cantEnemigos < maxEnem :

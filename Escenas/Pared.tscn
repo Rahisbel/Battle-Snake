@@ -11,6 +11,7 @@ animations = [ {
 } ]
 
 [node name="Pared" type="StaticBody2D"]
+editor/display_folded = true
 position = Vector2( 27.2075, 22.9116 )
 __meta__ = {
 "_edit_group_": true
