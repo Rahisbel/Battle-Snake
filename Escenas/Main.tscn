@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Escenas/Disparo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Escenas/Cuerpo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -17,11 +18,20 @@ Enemigo = ExtResource( 2 )
 Disparo = ExtResource( 3 )
 Cuerpo = ExtResource( 4 )
 
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.498
+anchor_right = 0.498
+anchor_bottom = 0.029
+margin_left = -489.952
+margin_top = 18.0
+margin_right = 489.048
+margin_bottom = 53.6
+
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 352.791, 394.745 )
 scale = Vector2( 0.988106, 0.982957 )
 
-[node name="Jugador" parent="." instance=ExtResource( 5 )]
+[node name="Jugador" parent="." instance=ExtResource( 6 )]
 position = Vector2( 492.246, 288.881 )
 
 [node name="Position2D" type="Position2D" parent="."]
@@ -44,6 +54,7 @@ one_shot = true
 
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
+[connection signal="health" from="Jugador" to="GUI" method="_on_Jugador_health"]
 [connection signal="hit" from="Jugador" to="." method="game_over"]
 [connection signal="localizacion" from="Jugador" to="." method="_on_Jugador_localizacion"]
 [connection signal="timeout" from="TimerEnemigo" to="." method="_on_TimerEnemigo_timeout"]

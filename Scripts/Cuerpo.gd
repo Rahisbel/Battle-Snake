@@ -1,4 +1,5 @@
 extends RigidBody2D
+
 var speed = 200
 var direccion
 var velocidad

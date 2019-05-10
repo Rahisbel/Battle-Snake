@@ -1,8 +1,10 @@
 extends RigidBody2D
+
 signal col
 
 export var min_speed = 250  # min velocidad
 export var max_speed = 300 #max velocidad
+
 var velocity
 var rotacion
 var enemigo = ["1"]   # nombre del frame 

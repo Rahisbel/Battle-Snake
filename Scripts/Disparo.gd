@@ -1,4 +1,5 @@
 extends RigidBody2D
+
 var velocity
 var direccion_rot = 0
 var velocidad_rot = 4.0
