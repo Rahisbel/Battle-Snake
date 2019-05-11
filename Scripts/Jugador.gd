@@ -4,22 +4,22 @@ signal hit
 signal disparo(direccion,localizacion,velocidad) # información de jugador para disparo
 signal cuerpo(direccion,localizacion,velocidad) # Prueba, no hace nada por ahora
 signal localizacion(posicion,direccion) # información para la persecusion
-signal health(max_health) 
+signal health
 
 export var speed = 250 # velocidad del jugador
 export (float) var velocidad_rot = 4.0
 
 var bala = preload("res://Escenas/Disparo.tscn")
 var cuerpo = preload("res://Escenas/Cuerpo.tscn")
-var max_health
 
 var direccion_rot = 0
 var screen_size  # tamaño de ventana
 var velocity 
+var max_health = 100
+var health = max_health
 
 func _ready():
 		screen_size = get_viewport_rect().size
-		max_health = 100
    
 func _process(delta):
 	direccion_rot = 0  
@@ -54,9 +54,10 @@ func _process(delta):
 	# Detecta la colisión
 func _on_Jugador_body_entered(body):
 	#hide() esconde el jugador cuando colisiona
+	max_health -=10;
 	emit_signal("health",max_health)
 	emit_signal("hit")  # emite la señal de la colisión
-	$CollisionShape2D.set_deferred("disabled", true) # esto evita que la señal se emita varias veces
+	#$CollisionShape2D.set_deferred("disabled", true) # esto evita que la señal se emita varias veces
 
 func start(pos): # cuando comience un juego nuevo
 	position = pos

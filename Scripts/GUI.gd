@@ -5,9 +5,10 @@ onready var bar = $HBoxContainer/barras/barra/progreso
 onready var tween = $Tween
 
 func _ready():
-	 #var jugador_max_health = $"../Characters/Jugador".max_health
-	 #bar.max_value = jugador_max_health
-	 pass 
+	var jugador_max_health = $"../Jugador".max_health
+	bar.max_value = jugador_max_health
+	actualizar_health(jugador_max_health)
+	pass 
 
 func _on_Jugador_health(player_health):
 	actualizar_health(player_health)

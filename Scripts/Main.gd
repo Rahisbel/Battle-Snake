@@ -78,13 +78,14 @@ func _on_Jugador_localizacion(posicion,direccion): # Persecusion
 
 
 func _on_Jugador_cuerpo(direccion, localizacion, velocidad): # prueba, por los momentos no hace nada
-	if nivel == 1:
-		print("1")
-	elif nivel ==2:
-		print("2")
-	elif nivel ==2:
-		print("3") 
-	elif nivel ==2:
-		print("4")
-	elif nivel ==2:
-		print("5")
+#	if nivel == 1:
+#		print("1")
+#	elif nivel ==2:
+#		print("2")
+#	elif nivel ==2:
+#		print("3") 
+#	elif nivel ==2:
+#		print("4")
+#	elif nivel ==2:
+#		print("5")
+	pass
