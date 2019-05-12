@@ -35,6 +35,7 @@ scale = Vector2( 0.306424, 0.319937 )
 frames = SubResource( 2 )
 animation = "bala"
 frame = 1
+speed_scale = 2.0
 playing = true
 __meta__ = {
 "_edit_group_": true

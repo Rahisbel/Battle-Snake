@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
@@ -9,11 +9,17 @@
 [ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Escenas/Menu.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Imagenes/label_HP_bg.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/pausa.gd" type="Script" id=10]
+[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -0.692373, -2.5436, 0, 0, 0, 0, 1021.43, -2.5436, 0, 0, 0, 0, 1008.96, 705.3, 0, 0, 0, 0, 526.128, 702.782, 0, 0, 0, 0, 6.43553, 700.265, 0, 0, 0, 0, -0.692373, -2.5436 )
 }
+
+[sub_resource type="DynamicFont" id=2]
+size = 45
+font_data = ExtResource( 11 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -70,6 +76,24 @@ normal = ExtResource( 9 )
 position = Vector2( 505.893, 582.899 )
 normal = ExtResource( 9 )
 
+[node name="pause" type="TouchScreenButton" parent="."]
+pause_mode = 2
+position = Vector2( 592.611, 8.20223 )
+normal = ExtResource( 9 )
+
+[node name="pausa" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="pausa"]
+margin_left = 262.471
+margin_top = 231.713
+margin_right = 423.471
+margin_bottom = 282.713
+custom_fonts/font = SubResource( 2 )
+text = "PAUSE"
+align = 1
+
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
 [connection signal="health" from="Jugador" to="GUI" method="_on_Jugador_health"]
@@ -84,3 +108,5 @@ normal = ExtResource( 9 )
 [connection signal="released" from="shots" to="Jugador" method="_on_shots_released"]
 [connection signal="pressed" from="right" to="Jugador" method="_on_right_pressed"]
 [connection signal="released" from="right" to="Jugador" method="_on_right_released"]
+[connection signal="pressed" from="pause" to="pausa" method="_on_pause_pressed"]
+[connection signal="released" from="pause" to="pausa" method="_on_pause_released"]
