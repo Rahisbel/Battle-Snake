@@ -19,8 +19,17 @@ func _ready():
 
 func game_over():
 	#$ScoreTimer.stop()
-	#$TimerEnemigo.stop()
+	if $Jugador.max_health == 0:
+		print("cero")
+		$TimerEnemigo.stop()
+		$Menu.game_over()
 	pass
+
+func new_game():
+	score = 0
+	$Menu.mensaje("Get Ready")
+	$Jugador.start($Position2D.position)
+	$Inicio.start()
 
 func _on_TimerEnemigo_timeout(): # Movimiento básico del enemigo
 	if cantEnemigos < maxEnem :
@@ -36,13 +45,9 @@ func _on_TimerEnemigo_timeout(): # Movimiento básico del enemigo
 		enem.linear_velocity = enem.linear_velocity.rotated(direction)
 		cantEnemigos+=1
 
-func new_game():
-	score = 0
-	$Jugador.start($Position2D.position)
-	$Inicio.start()
-
 func _on_Inicio_timeout():
 	$TimerEnemigo.start()
+	pass
 
 func _on_Jugador_disparo(direccion, localizacion,velocidad): # disparos
 	var b = Disparo.instance()
@@ -76,7 +81,6 @@ func _on_Jugador_localizacion(posicion,direccion): # Persecusion
 				elif posicion.y < j.position.y && posicion.x > j.position.x:
 					j.linear_velocity = Vector2(speedE*(porcB/100),-(speedE*(porcA/100)))
 
-
 func _on_Jugador_cuerpo(direccion, localizacion, velocidad): # prueba, por los momentos no hace nada
 #	if nivel == 1:
 #		print("1")
@@ -89,3 +93,6 @@ func _on_Jugador_cuerpo(direccion, localizacion, velocidad): # prueba, por los m
 #	elif nivel ==2:
 #		print("5")
 	pass
+
+func _on_Menu_Inicio():
+	$TimerEnemigo.start()

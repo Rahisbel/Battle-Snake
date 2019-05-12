@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Enemigo.gd" type="Script" id=1]
-[ext_resource path="res://Imagenes/bomb.png" type="Texture" id=2]
+[ext_resource path="res://Imagenes/bomb2.png" type="Texture" id=2]
+[ext_resource path="res://Imagenes/bomb1.png" type="Texture" id=3]
+[ext_resource path="res://Imagenes/bomb3.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "1",
 "speed": 5.0
@@ -29,7 +31,10 @@ script = ExtResource( 1 )
 scale = Vector2( 0.102875, 0.110884 )
 frames = SubResource( 1 )
 animation = "1"
+speed_scale = 3.0
 playing = true
+flip_h = true
+flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

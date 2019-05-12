@@ -15,6 +15,7 @@ _global_script_class_icons={
 
 [application]
 
+config/name="Battle Snake"
 run/main_scene="res://Escenas/Main.tscn"
 
 [display]

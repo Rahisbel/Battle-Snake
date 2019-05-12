@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Escenas/Disparo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Escenas/Cuerpo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Imagenes/llll.png" type="Texture" id=5]
+[ext_resource path="res://Imagenes/fondoo.png" type="Texture" id=5]
 [ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Escenas/Menu.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -20,15 +21,15 @@ Disparo = ExtResource( 3 )
 Cuerpo = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 345.885, 359.479 )
+position = Vector2( 350.895, 357.809 )
 scale = Vector2( 1.00857, 1.02562 )
 texture = ExtResource( 5 )
 
 [node name="GUI" parent="." instance=ExtResource( 6 )]
-margin_left = -262.952
-margin_top = 19.1599
-margin_right = 241.048
-margin_bottom = 72.1599
+margin_left = -48.0
+margin_top = -5.0
+margin_right = 224.0
+margin_bottom = 31.0
 
 [node name="Jugador" parent="." instance=ExtResource( 7 )]
 position = Vector2( 372.663, 353.456 )
@@ -37,7 +38,7 @@ position = Vector2( 372.663, 353.456 )
 position = Vector2( 370.776, 350.711 )
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2( 0.807284, 2.17114 )
+position = Vector2( -1.98225, 2.17114 )
 scale = Vector2( 0.683046, 1 )
 curve = SubResource( 1 )
 __meta__ = {
@@ -53,10 +54,13 @@ position = Vector2( -0.692373, -2.5436 )
 wait_time = 0.1
 one_shot = true
 
+[node name="Menu" parent="." instance=ExtResource( 8 )]
+
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
 [connection signal="health" from="Jugador" to="GUI" method="_on_Jugador_health"]
 [connection signal="hit" from="Jugador" to="." method="game_over"]
 [connection signal="localizacion" from="Jugador" to="." method="_on_Jugador_localizacion"]
+[connection signal="vida" from="Jugador" to="GUI" method="_on_Jugador_vida"]
 [connection signal="timeout" from="TimerEnemigo" to="." method="_on_TimerEnemigo_timeout"]
 [connection signal="timeout" from="Inicio" to="." method="_on_Inicio_timeout"]

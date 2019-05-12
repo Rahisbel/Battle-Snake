@@ -1,77 +1,89 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/GUI.gd" type="Script" id=1]
-[ext_resource path="res://Imagenes/label_HP_bg.png" type="Texture" id=2]
-[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Imagenes/lifebar_bg.png" type="Texture" id=4]
-[ext_resource path="res://Imagenes/lifebar_fill.png" type="Texture" id=5]
+[ext_resource path="res://Imagenes/lifebar_bg.png" type="Texture" id=2]
+[ext_resource path="res://Imagenes/lifebar_fill.png" type="Texture" id=3]
+[ext_resource path="res://Imagenes/label_HP_bg.png" type="Texture" id=4]
+[ext_resource path="res://Imagenes/gem_2.png" type="Texture" id=5]
+[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-size = 25
-outline_color = Color( 0.119843, 0.902344, 0.828984, 1 )
-extra_spacing_bottom = 2
-font_data = ExtResource( 3 )
+size = 19
+outline_color = Color( 0.968627, 0.627451, 0.0392157, 1 )
+use_filter = true
+font_data = ExtResource( 6 )
 
 [node name="GUI" type="MarginContainer"]
-anchor_left = 0.218
+anchor_left = 0.08
 anchor_top = 0.019
-anchor_right = 0.218
+anchor_right = 0.08
 anchor_bottom = 0.019
-margin_left = -136.6
+margin_left = -40.0
 margin_top = -0.300001
-margin_right = 367.4
-margin_bottom = 52.7
+margin_right = 227.0
+margin_bottom = 30.0
 script = ExtResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 504.0
-margin_bottom = 53.0
+margin_right = 367.0
+margin_bottom = 40.0
 
 [node name="barras" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 500.0
-margin_bottom = 53.0
+margin_right = 263.0
+margin_bottom = 40.0
 
 [node name="barra" type="HBoxContainer" parent="HBoxContainer/barras"]
-margin_right = 500.0
-margin_bottom = 53.0
+margin_right = 263.0
+margin_bottom = 37.0
 
 [node name="contador" type="MarginContainer" parent="HBoxContainer/barras/barra"]
-margin_right = 100.0
+visible = false
+margin_right = 89.81
 margin_bottom = 53.0
 rect_min_size = Vector2( 89.81, 40 )
 
-[node name="fondo" type="NinePatchRect" parent="HBoxContainer/barras/barra/contador"]
-margin_right = 100.0
-margin_bottom = 53.0
-rect_min_size = Vector2( 100, 30 )
-texture = ExtResource( 2 )
-
-[node name="numero" type="Label" parent="HBoxContainer/barras/barra/contador/fondo"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 20.3604
-margin_top = 2.72076
-margin_right = -29.6396
-margin_bottom = -10.2792
-rect_min_size = Vector2( 50, 40 )
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
-text = "100"
-align = 2
-valign = 2
-
 [node name="progreso" type="TextureProgress" parent="HBoxContainer/barras/barra"]
-margin_left = 104.0
-margin_right = 500.0
-margin_bottom = 53.0
+margin_right = 263.0
+margin_bottom = 37.0
 value = 100.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
 
 [node name="contadores" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 504.0
-margin_right = 504.0
-margin_bottom = 53.0
+margin_left = 267.0
+margin_right = 367.0
+margin_bottom = 40.0
+
+[node name="contador" type="MarginContainer" parent="HBoxContainer/contadores"]
+margin_right = 100.0
+margin_bottom = 40.0
+
+[node name="fondo" type="NinePatchRect" parent="HBoxContainer/contadores/contador"]
+margin_right = 100.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 100, 40 )
+texture = ExtResource( 4 )
+
+[node name="icono" type="TextureRect" parent="HBoxContainer/contadores/contador/fondo"]
+margin_left = 45.6534
+margin_top = -6.19028
+margin_right = 95.6534
+margin_bottom = 39.8097
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="numero" type="Label" parent="HBoxContainer/contadores/contador/fondo"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -27.7737
+margin_top = 0.452427
+margin_right = 7.22626
+margin_bottom = 0.452427
+custom_fonts/font = SubResource( 1 )
+text = "3"
+align = 1
+valign = 1
 
 [node name="Tween" type="Tween" parent="."]
 

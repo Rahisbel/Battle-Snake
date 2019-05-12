@@ -1,6 +1,6 @@
 extends MarginContainer
 
-onready var number_label = $HBoxContainer/barras/barra/contador/fondo/numero
+onready var number_label = $HBoxContainer/contadores/contador/fondo/numero
 onready var bar = $HBoxContainer/barras/barra/progreso
 onready var tween = $Tween
 
@@ -10,10 +10,15 @@ func _ready():
 	actualizar_health(jugador_max_health)
 	pass 
 
-func _on_Jugador_health(player_health):
-	actualizar_health(player_health)
+func _on_Jugador_health(health):
+	actualizar_health(health)
 	pass 
-	
+
 func actualizar_health(new_value):
-	number_label.text = str(new_value)
 	bar.value = new_value
+
+func _on_Jugador_vida(vida):
+	actualizar_vida(vida)
+
+func actualizar_vida(new_value):
+	number_label.text = str(new_value)
