@@ -27,9 +27,10 @@ func game_over():
 
 func new_game():
 	score = 0
+	$Inicio.start()
 	$Menu.mensaje("Get Ready")
 	$Jugador.start($Position2D.position)
-	$Inicio.start()
+	
 
 func _on_TimerEnemigo_timeout(): # Movimiento básico del enemigo
 	if cantEnemigos < maxEnem :

@@ -15,7 +15,7 @@ animations = [ {
 radius = 22.3988
 
 [node name="Jugador" type="Area2D"]
-position = Vector2( 549.388, 252.948 )
+position = Vector2( 429.838, 238.883 )
 gravity = 0.0
 script = ExtResource( 1 )
 __meta__ = {

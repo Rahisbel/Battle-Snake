@@ -19,8 +19,9 @@ func game_over():
 	$Mensaje.show()
 	
 func _on_start_pressed():
-	$start.hide()
+	
 	emit_signal("Start")
+	$start.hide()
 
 func _on_tiempo_timeout():
 	$Mensaje.hide()

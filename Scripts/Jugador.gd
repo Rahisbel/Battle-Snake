@@ -25,6 +25,9 @@ var max_health = 100
 var health = max_health
 #warning-ignore:unused_class_variable
 var vida = 3
+var left  = false
+var shots = false
+var right = false
 
 func _ready():
 		screen_size = get_viewport_rect().size
@@ -35,13 +38,13 @@ func _process(delta):
 	velocity = Vector2(0,speed).rotated(rotation)
 
 	#esto es de prueba, se supone que hay que usar el touch
-	if Input.is_action_pressed("ui_right"): # rotacion a la der
+	if Input.is_action_pressed("ui_right") or right: # rotacion a la der
 		direccion_rot+= 1  
-
-	if Input.is_action_pressed("ui_left"): # rotacion a la izq
+	
+	if Input.is_action_pressed("ui_left") or left: # rotacion a la izq
 		direccion_rot-= 1  
  
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") or shots:
 		emit_signal("disparo", rotation, position,velocity) 
 
 	if velocity.length() > 0:
@@ -78,4 +81,21 @@ func start(pos): # cuando comience un juego nuevo
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-   
+
+func _on_left_pressed():
+	left = true
+
+func _on_shots_pressed():
+	shots = true
+
+func _on_right_pressed():
+	right = true
+
+func _on_left_released():
+	left = false
+
+func _on_shots_released():
+	shots = false
+
+func _on_right_released():
+	right = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Escenas/Menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Imagenes/label_HP_bg.png" type="Texture" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -21,7 +22,7 @@ Disparo = ExtResource( 3 )
 Cuerpo = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 350.895, 357.809 )
+position = Vector2( 353.318, 350.959 )
 scale = Vector2( 1.00857, 1.02562 )
 texture = ExtResource( 5 )
 
@@ -56,6 +57,19 @@ one_shot = true
 
 [node name="Menu" parent="." instance=ExtResource( 8 )]
 
+[node name="left" type="TouchScreenButton" parent="."]
+position = Vector2( 83.7084, 583.567 )
+normal = ExtResource( 9 )
+
+[node name="shots" type="TouchScreenButton" parent="."]
+position = Vector2( 315.705, 580.476 )
+scale = Vector2( 1, 0.907438 )
+normal = ExtResource( 9 )
+
+[node name="right" type="TouchScreenButton" parent="."]
+position = Vector2( 505.893, 582.899 )
+normal = ExtResource( 9 )
+
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
 [connection signal="health" from="Jugador" to="GUI" method="_on_Jugador_health"]
@@ -64,3 +78,9 @@ one_shot = true
 [connection signal="vida" from="Jugador" to="GUI" method="_on_Jugador_vida"]
 [connection signal="timeout" from="TimerEnemigo" to="." method="_on_TimerEnemigo_timeout"]
 [connection signal="timeout" from="Inicio" to="." method="_on_Inicio_timeout"]
+[connection signal="pressed" from="left" to="Jugador" method="_on_left_pressed"]
+[connection signal="released" from="left" to="Jugador" method="_on_left_released"]
+[connection signal="pressed" from="shots" to="Jugador" method="_on_shots_pressed"]
+[connection signal="released" from="shots" to="Jugador" method="_on_shots_released"]
+[connection signal="pressed" from="right" to="Jugador" method="_on_right_pressed"]
+[connection signal="released" from="right" to="Jugador" method="_on_right_released"]
