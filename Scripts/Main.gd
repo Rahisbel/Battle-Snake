@@ -18,19 +18,16 @@ func _ready():
 	new_game()
 
 func game_over():
-	#$ScoreTimer.stop()
 	if $Jugador.max_health == 0:
 		print("cero")
 		$TimerEnemigo.stop()
-		$Menu.game_over()
 	pass
 
 func new_game():
 	score = 0
+	randomize() # genera números aleatorios
 	$Inicio.start()
-	$Menu.mensaje("Get Ready")
 	$Jugador.start($Position2D.position)
-	
 
 func _on_TimerEnemigo_timeout(): # Movimiento básico del enemigo
 	if cantEnemigos < maxEnem :
@@ -95,5 +92,13 @@ func _on_Jugador_cuerpo(direccion, localizacion, velocidad): # prueba, por los m
 #		print("5")
 	pass
 
-func _on_Menu_Inicio():
-	$TimerEnemigo.start()
+#func _on_Menu_Inicio():
+#	$TimerEnemigo.start()
+
+func _on_leave_pressed():
+	get_tree().quit()
+
+func _on_restart_pressed():
+	new_game()
+
+	

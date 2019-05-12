@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+export (PackedScene) var Main
 signal Start
 
 func _ready():
@@ -8,20 +9,17 @@ func _ready():
 func mensaje(text):
 	$Mensaje.text = text
 	$Mensaje.show() 
-	$tiempo.start()
 	pass
 
-func game_over():
-	mensaje("GAME OVER")
-	yield($tiempo,"timeout")
-	$start.show()
-	$Mensaje.text = "Battle Snake"
-	$Mensaje.show()
+#func game_over():
+#	mensaje("GAME OVER")
+#	yield($tiempo,"timeout")
+#	$start.show()
+#	$Mensaje.text = "Battle Snake"
+#	$Mensaje.show()
 	
 func _on_start_pressed():
-	
-	emit_signal("Start")
-	$start.hide()
+	get_tree().change_scene_to(Main)
 
-func _on_tiempo_timeout():
-	$Mensaje.hide()
+func _on_leave_pressed():
+	get_tree().quit()

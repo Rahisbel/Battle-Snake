@@ -7,9 +7,9 @@
 [ext_resource path="res://Imagenes/fondoo.png" type="Texture" id=5]
 [ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Escenas/Menu.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Imagenes/label_HP_bg.png" type="Texture" id=9]
-[ext_resource path="res://Scripts/pausa.gd" type="Script" id=10]
+[ext_resource path="res://Imagenes/label_HP_bg.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/pausa.gd" type="Script" id=9]
+[ext_resource path="res://Escenas/MenuPausa.tscn" type="PackedScene" id=10]
 [ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="Curve2D" id=1]
@@ -45,6 +45,7 @@ position = Vector2( 372.663, 353.456 )
 position = Vector2( 370.776, 350.711 )
 
 [node name="Path2D" type="Path2D" parent="."]
+editor/display_folded = true
 position = Vector2( -1.98225, 2.17114 )
 scale = Vector2( 0.683046, 1 )
 curve = SubResource( 1 )
@@ -61,29 +62,28 @@ position = Vector2( -0.692373, -2.5436 )
 wait_time = 0.1
 one_shot = true
 
-[node name="Menu" parent="." instance=ExtResource( 8 )]
-
 [node name="left" type="TouchScreenButton" parent="."]
-position = Vector2( 83.7084, 583.567 )
-normal = ExtResource( 9 )
+position = Vector2( 186.954, 579.671 )
+normal = ExtResource( 8 )
 
 [node name="shots" type="TouchScreenButton" parent="."]
 position = Vector2( 315.705, 580.476 )
 scale = Vector2( 1, 0.907438 )
-normal = ExtResource( 9 )
+normal = ExtResource( 8 )
 
 [node name="right" type="TouchScreenButton" parent="."]
-position = Vector2( 505.893, 582.899 )
-normal = ExtResource( 9 )
+position = Vector2( 435.764, 577.055 )
+normal = ExtResource( 8 )
 
 [node name="pause" type="TouchScreenButton" parent="."]
 pause_mode = 2
-position = Vector2( 592.611, 8.20223 )
-normal = ExtResource( 9 )
+position = Vector2( 372.484, 12.0983 )
+normal = ExtResource( 8 )
 
 [node name="pausa" type="Node" parent="."]
 pause_mode = 2
-script = ExtResource( 10 )
+script = ExtResource( 9 )
+MenuPausa = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="pausa"]
 margin_left = 262.471
@@ -93,6 +93,14 @@ margin_bottom = 282.713
 custom_fonts/font = SubResource( 2 )
 text = "PAUSE"
 align = 1
+
+[node name="leave" type="TouchScreenButton" parent="."]
+position = Vector2( 551.292, 11.6882 )
+normal = ExtResource( 8 )
+
+[node name="restart" type="TouchScreenButton" parent="."]
+position = Vector2( 463.631, 11.6882 )
+normal = ExtResource( 8 )
 
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
@@ -110,3 +118,5 @@ align = 1
 [connection signal="released" from="right" to="Jugador" method="_on_right_released"]
 [connection signal="pressed" from="pause" to="pausa" method="_on_pause_pressed"]
 [connection signal="released" from="pause" to="pausa" method="_on_pause_released"]
+[connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
