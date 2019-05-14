@@ -10,7 +10,7 @@ func ir_escena(camino):
 	call_deferred("ir_escena_diferida",camino)
 
 func ir_escena_diferida(camino):
-	escena_actual.free()
+	#escena_actual.free()
 	var s = ResourceLoader.load(camino)
 	escena_actual = s.instance()
 	get_tree().get_root().add_child(escena_actual)

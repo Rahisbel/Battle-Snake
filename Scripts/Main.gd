@@ -84,10 +84,15 @@ func _on_restart_pressed(): #reinicio, aún le falta unos detalles
 
 func _on_Jugador_vida(max_health): #game over
 	if max_health == 0:
-		get_tree().change_scene_to(GameOver) 
-		#get_tree().paused = true # por los momentos sólo se pausa 
+		get_tree().change_scene_to(GameOver)
 		#get_node("/root/Global").ir_escena("res://GameOver.scn")
 		
 func _nivel():
 	if cantidad == 0:
 		print("nivel")
+
+func _on_music_pressed():
+	if $AudioStreamPlayer.playing:
+		$AudioStreamPlayer.stop()
+	else:
+		$AudioStreamPlayer.play()

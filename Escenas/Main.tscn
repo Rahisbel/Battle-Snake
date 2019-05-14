@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
@@ -18,7 +18,6 @@
 [ext_resource path="res://Imagenes/restart.png" type="Texture" id=16]
 [ext_resource path="res://Imagenes/music.png" type="Texture" id=17]
 [ext_resource path="res://Music/melodyloops-preview-on-a-happy-vibe-2m30s.ogg" type="AudioStream" id=18]
-[ext_resource path="res://Scripts/music.gd" type="Script" id=19]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -128,7 +127,6 @@ normal = ExtResource( 17 )
 pause_mode = 2
 stream = ExtResource( 18 )
 autoplay = true
-script = ExtResource( 19 )
 
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
@@ -148,5 +146,4 @@ script = ExtResource( 19 )
 [connection signal="released" from="pause" to="pausa" method="_on_pause_released"]
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
 [connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="music" to="AudioStreamPlayer" method="_on_music_pressed"]
-[connection signal="released" from="music" to="AudioStreamPlayer" method="_on_music_released"]
+[connection signal="pressed" from="music" to="." method="_on_music_pressed"]
