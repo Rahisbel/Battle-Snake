@@ -3,13 +3,14 @@ extends Node
 export (PackedScene) var Enemigo
 export (PackedScene) var Disparo
 export (PackedScene) var Cuerpo
+export (PackedScene) var GameOver
 
 var score
-var maxEnem = 4
+var maxEnem = 15
 var cantidad
 var enemigos = [] #vector de enemigos
 var cantEnemigos = 0 
-var speedE= 200  #Velocidad enemigo
+var speedE= 300  #Velocidad enemigo
 var body 
 var nivel = 1
 
@@ -83,8 +84,9 @@ func _on_restart_pressed(): #reinicio, aún le falta unos detalles
 
 func _on_Jugador_vida(max_health): #game over
 	if max_health == 0:
-		#get_tree().change_scene_to(Cuerpo) se supone que debe de cambiar a otra escena
-		get_tree().paused = true # por los momentos sólo se pausa 
+		get_tree().change_scene_to(GameOver) 
+		#get_tree().paused = true # por los momentos sólo se pausa 
+		#get_node("/root/Global").ir_escena("res://GameOver.scn")
 		
 func _nivel():
 	if cantidad == 0:

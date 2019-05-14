@@ -2,75 +2,59 @@
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Main.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Imagenes/menu.png" type="Texture" id=3]
-[ext_resource path="res://font/Lucy Black.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Imagenes/dire.png" type="Texture" id=5]
-[ext_resource path="res://Imagenes/off.png" type="Texture" id=6]
-[ext_resource path="res://Imagenes/xc.png" type="Texture" id=7]
+[ext_resource path="res://Escenas/Programadors.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Imagenes/menu.png" type="Texture" id=4]
+[ext_resource path="res://Imagenes/xc.png" type="Texture" id=5]
+[ext_resource path="res://font/Lucy Black.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Imagenes/dire.png" type="Texture" id=7]
+[ext_resource path="res://Imagenes/off.png" type="Texture" id=8]
+[ext_resource path="res://Imagenes/credits.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
-size = 120
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 40
-font_data = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 40
-font_data = ExtResource( 4 )
+size = 150
+font_data = ExtResource( 6 )
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
 Main = ExtResource( 2 )
+Programadors = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 354.907, 348.581 )
-scale = Vector2( 1.01758, 1.00293 )
-texture = ExtResource( 3 )
+position = Vector2( 375.447, 674.802 )
+scale = Vector2( 1.10426, 1.48314 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 523.789, 420.834 )
+scale = Vector2( 1.37, 1.43 )
+texture = ExtResource( 5 )
 
 [node name="Mensaje" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -267.034
-margin_top = 63.6948
-margin_right = 241.966
-margin_bottom = 216.695
+margin_left = -314.024
+margin_top = 78.4095
+margin_right = 322.976
+margin_bottom = 323.41
 custom_fonts/font = SubResource( 1 )
 text = "Battle Snake"
 
 [node name="start" type="TouchScreenButton" parent="."]
-position = Vector2( 263.632, 281.775 )
+position = Vector2( 245.056, 514.846 )
 rotation = 13.6502
-scale = Vector2( 0.797005, 0.80633 )
-normal = ExtResource( 5 )
-
-[node name="Label" type="Label" parent="start"]
-visible = false
-margin_left = -119.838
-margin_top = -93.024
-margin_right = -52.8383
-margin_bottom = -41.024
-custom_fonts/font = SubResource( 2 )
-text = "Start"
+scale = Vector2( 1.35, 1.35 )
+normal = ExtResource( 7 )
 
 [node name="leave" type="TouchScreenButton" parent="."]
-position = Vector2( 302.12, 431.128 )
-scale = Vector2( 0.792222, 0.794761 )
-normal = ExtResource( 6 )
+position = Vector2( 469.379, 897.463 )
+scale = Vector2( 1.35, 1.35 )
+normal = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="leave"]
-visible = false
-margin_left = 27.4916
-margin_top = 3.88938
-margin_right = 102.492
-margin_bottom = 55.8894
-custom_fonts/font = SubResource( 3 )
-text = "Leave"
-
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 543.252, 267.961 )
-texture = ExtResource( 7 )
+[node name="Credits" type="TouchScreenButton" parent="."]
+position = Vector2( 311.55, 707.313 )
+scale = Vector2( 1.35, 1.35 )
+normal = ExtResource( 9 )
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]

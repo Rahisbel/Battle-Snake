@@ -9,7 +9,7 @@ signal health
 #warning-ignore:unused_signal
 signal vida
 
-export var speed = 250 # velocidad del jugador
+export var speed = 350 # velocidad del jugador
 export (float) var velocidad_rot = 4.0
 
 #warning-ignore:unused_class_variable
@@ -61,7 +61,7 @@ func _process(delta):
 
 	# Detecta la colisión del enemigo
 func _on_Jugador_body_entered(body):
-	max_health -= 5;
+	max_health -= 2;
 	emit_signal("health",max_health)
 	if max_health == 0:
 		emit_signal("vida",max_health) # esto emite una señal al main para saber que ya perdió

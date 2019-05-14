@@ -1,61 +1,64 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Escenas/Disparo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Escenas/Cuerpo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Imagenes/menu.png" type="Texture" id=5]
-[ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Imagenes/left.png" type="Texture" id=8]
-[ext_resource path="res://Imagenes/round.png" type="Texture" id=9]
-[ext_resource path="res://Imagenes/right.png" type="Texture" id=10]
-[ext_resource path="res://Imagenes/pause.png" type="Texture" id=11]
-[ext_resource path="res://Scripts/pausa.gd" type="Script" id=12]
-[ext_resource path="res://font/Lucy Black.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Imagenes/off.png" type="Texture" id=14]
-[ext_resource path="res://Imagenes/restart.png" type="Texture" id=15]
-[ext_resource path="res://Imagenes/sonid.png" type="Texture" id=16]
-[ext_resource path="res://Music/melodyloops-preview-on-a-happy-vibe-2m30s.ogg" type="AudioStream" id=17]
-[ext_resource path="res://Scripts/music.gd" type="Script" id=18]
+[ext_resource path="res://Escenas/GameOver.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Imagenes/menu.png" type="Texture" id=6]
+[ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Imagenes/left.png" type="Texture" id=9]
+[ext_resource path="res://Imagenes/round.png" type="Texture" id=10]
+[ext_resource path="res://Imagenes/right.png" type="Texture" id=11]
+[ext_resource path="res://Imagenes/pause.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/pausa.gd" type="Script" id=13]
+[ext_resource path="res://font/Lucy Black.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Imagenes/off.png" type="Texture" id=15]
+[ext_resource path="res://Imagenes/restart.png" type="Texture" id=16]
+[ext_resource path="res://Imagenes/music.png" type="Texture" id=17]
+[ext_resource path="res://Music/melodyloops-preview-on-a-happy-vibe-2m30s.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Scripts/music.gd" type="Script" id=19]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -0.692373, -2.5436, 0, 0, 0, 0, 1021.43, -2.5436, 0, 0, 0, 0, 1008.96, 705.3, 0, 0, 0, 0, 526.128, 702.782, 0, 0, 0, 0, 6.43553, 700.265, 0, 0, 0, 0, -0.692373, -2.5436 )
+"points": PoolVector2Array( 0, 0, 0, 0, -0.692373, -2.5436, 0, 0, 0, 0, 1008.66, -6.02768, 0, 0, 0, 0, 1029.17, 409.249, 0, 0, 0, 0, 1042.84, 847.782, 0, 0, 0, 0, 674.069, 842.551, 0, 0, 0, 0, 513.884, 852.312, 0, 0, 0, 0, 33.3289, 845.805, 0, 0, 0, 0, -9.79186, 469.049, 0, 0, 0, 0, -0.692373, -2.5436 )
 }
 
 [sub_resource type="DynamicFont" id=2]
-size = 100
-font_data = ExtResource( 13 )
+size = 150
+font_data = ExtResource( 14 )
 
 [node name="Main" type="Node"]
-editor/display_folded = true
 script = ExtResource( 1 )
 Enemigo = ExtResource( 2 )
 Disparo = ExtResource( 3 )
 Cuerpo = ExtResource( 4 )
+GameOver = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 351.627, 352.364 )
-scale = Vector2( 1.00857, 1.02562 )
-texture = ExtResource( 5 )
+position = Vector2( 395.529, 690.688 )
+scale = Vector2( 1.15161, 1.48154 )
+texture = ExtResource( 6 )
 
-[node name="GUI" parent="." instance=ExtResource( 6 )]
-margin_left = 36.0
-margin_top = 7.0
-margin_right = 314.0
-margin_bottom = 49.0
+[node name="GUI" parent="." instance=ExtResource( 7 )]
+anchor_top = 0.03
+anchor_bottom = 0.03
+margin_left = 16.0
+margin_top = -22.98
+margin_right = 296.0
+margin_bottom = 44.02
 
-[node name="Jugador" parent="." instance=ExtResource( 7 )]
-position = Vector2( 372.663, 353.456 )
+[node name="Jugador" parent="." instance=ExtResource( 8 )]
+position = Vector2( 359.775, 457.991 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 370.776, 350.711 )
+position = Vector2( 370.776, 438.59 )
 
 [node name="Path2D" type="Path2D" parent="."]
 editor/display_folded = true
-position = Vector2( -1.98225, 2.17114 )
-scale = Vector2( 0.683046, 1 )
+position = Vector2( -8.71013, 3.78802 )
+scale = Vector2( 0.795003, 1.63567 )
 curve = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -63,6 +66,7 @@ __meta__ = {
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2( -0.692373, -2.5436 )
+rotation = -0.00345181
 
 [node name="TimerEnemigo" type="Timer" parent="."]
 
@@ -71,61 +75,60 @@ wait_time = 0.1
 one_shot = true
 
 [node name="left" type="TouchScreenButton" parent="."]
-position = Vector2( 183.017, 550.603 )
-scale = Vector2( 0.751491, 0.744599 )
-normal = ExtResource( 8 )
-
-[node name="shots" type="TouchScreenButton" parent="."]
-position = Vector2( 318.16, 552.167 )
-scale = Vector2( 0.751491, 0.747682 )
+position = Vector2( 113.399, 1131.33 )
+scale = Vector2( 1.35, 1.35 )
 normal = ExtResource( 9 )
 
-[node name="right" type="TouchScreenButton" parent="."]
-position = Vector2( 448.535, 551.084 )
-scale = Vector2( 0.780123, 0.749546 )
+[node name="shots" type="TouchScreenButton" parent="."]
+position = Vector2( 311.137, 1135.5 )
+scale = Vector2( 1.35, 1.35 )
 normal = ExtResource( 10 )
+
+[node name="right" type="TouchScreenButton" parent="."]
+position = Vector2( 511.063, 1137.88 )
+scale = Vector2( 1.35, 1.35 )
+normal = ExtResource( 11 )
 
 [node name="pause" type="TouchScreenButton" parent="."]
 pause_mode = 2
-position = Vector2( 375.11, 6.57439 )
-scale = Vector2( 0.538483, 0.502981 )
-normal = ExtResource( 11 )
+position = Vector2( 312.838, 3.4835 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 12 )
 
 [node name="pausa" type="Node" parent="."]
 pause_mode = 2
-editor/display_folded = true
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="pausa"]
-margin_left = 216.098
-margin_top = 230.269
-margin_right = 480.098
-margin_bottom = 357.269
+margin_left = 195.115
+margin_top = 522.368
+margin_right = 591.115
+margin_bottom = 712.368
 custom_fonts/font = SubResource( 2 )
 text = "PAUSE"
 align = 1
 
 [node name="leave" type="TouchScreenButton" parent="."]
-position = Vector2( 618.228, 5.2611 )
-scale = Vector2( 0.513078, 0.517963 )
-normal = ExtResource( 14 )
+position = Vector2( 655.955, 4.65605 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 15 )
 
 [node name="restart" type="TouchScreenButton" parent="."]
-position = Vector2( 460.734, 7.14401 )
-scale = Vector2( 0.520732, 0.485231 )
-normal = ExtResource( 15 )
+position = Vector2( 428.674, 1.44808 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 16 )
 
 [node name="music" type="TouchScreenButton" parent="."]
 pause_mode = 2
-position = Vector2( 541.499, 6.4618 )
-scale = Vector2( 0.515365, 0.515365 )
-normal = ExtResource( 16 )
+position = Vector2( 543.135, 2.37091 )
+scale = Vector2( 0.8, 0.8 )
+normal = ExtResource( 17 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-stream = ExtResource( 17 )
+stream = ExtResource( 18 )
 autoplay = true
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Programadors.gd" type="Script" id=1]
+[ext_resource path="res://Escenas/Main.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menu.png" type="Texture" id=3]
+[ext_resource path="res://font/Lucy Black.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Imagenes/left.png" type="Texture" id=5]
+[ext_resource path="res://Imagenes/menuuu.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 150
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 85
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 85
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 85
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 85
+font_data = ExtResource( 4 )
+
+[node name="Programadors" type="CanvasLayer"]
+script = ExtResource( 1 )
+Main = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 387.825, 668.758 )
+scale = Vector2( 1.06629, 1.02608 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 224.304
+margin_top = 53.2425
+margin_right = 561.304
+margin_bottom = 243.243
+custom_fonts/font = SubResource( 1 )
+text = "Credits"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 64.6478
+margin_top = 253.431
+margin_right = 676.648
+margin_bottom = 472.431
+custom_fonts/font = SubResource( 2 )
+text = "Rahisbel Herrera 
+V- 25.713.434"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 53.3014
+margin_top = 482.672
+margin_right = 625.301
+margin_bottom = 701.672
+custom_fonts/font = SubResource( 3 )
+text = "Ivan Marquez
+ V-26.403.075"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 260.307
+margin_top = 740.885
+margin_right = 685.307
+margin_bottom = 848.885
+custom_fonts/font = SubResource( 4 )
+text = "Programacion II "
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 220.586
+margin_top = 869.006
+margin_right = 700.586
+margin_bottom = 977.006
+custom_fonts/font = SubResource( 5 )
+text = "Informatica UNET"
+
+[node name="play" type="TouchScreenButton" parent="."]
+position = Vector2( 701.313, 1201.11 )
+rotation = 3.19395
+scale = Vector2( 1.35, 1.35 )
+normal = ExtResource( 5 )
+
+[node name="Menu" type="TouchScreenButton" parent="."]
+position = Vector2( 328.834, 1025.72 )
+scale = Vector2( 1.35, 1.35 )
+normal = ExtResource( 6 )
+
+[connection signal="pressed" from="play" to="." method="_on_volver_pressed"]
