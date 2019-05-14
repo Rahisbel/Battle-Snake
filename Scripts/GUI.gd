@@ -16,9 +16,3 @@ func _on_Jugador_health(health):
 
 func actualizar_health(new_value):
 	bar.value = new_value
-
-func _on_Jugador_vida(vida):
-	actualizar_vida(vida)
-
-func actualizar_vida(new_value):
-	number_label.text = str(new_value)

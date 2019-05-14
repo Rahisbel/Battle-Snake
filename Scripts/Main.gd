@@ -17,12 +17,6 @@ func _ready():
 	randomize() # genera números aleatorios
 	new_game()
 
-func game_over():
-	if $Jugador.max_health == 0:
-		print("cero")
-		$TimerEnemigo.stop()
-	pass
-
 func new_game():
 	score = 0
 	randomize() # genera números aleatorios
@@ -101,4 +95,9 @@ func _on_leave_pressed():
 func _on_restart_pressed():
 	new_game()
 
-	
+func _on_Jugador_vida(max_health):
+	if max_health == 0:
+		print("hhh")
+		get_tree().change_scene_to(Cuerpo)
+		#get_tree().paused = true
+		

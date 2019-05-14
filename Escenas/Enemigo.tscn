@@ -17,7 +17,7 @@ animations = [ {
 radius = 18.6905
 
 [node name="Enemigo" type="RigidBody2D"]
-collision_mask = 0
+collision_layer = 2
 gravity_scale = 0.0
 continuous_cd = 2
 contacts_reported = 1
@@ -31,7 +31,7 @@ script = ExtResource( 1 )
 scale = Vector2( 0.102875, 0.110884 )
 frames = SubResource( 1 )
 animation = "1"
-frame = 1
+frame = 2
 speed_scale = 3.0
 playing = true
 flip_h = true
@@ -40,5 +40,7 @@ flip_v = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_Enemigo_body_entered"]

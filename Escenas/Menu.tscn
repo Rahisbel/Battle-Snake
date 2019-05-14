@@ -1,17 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Main.tscn" type="PackedScene" id=2]
-[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Imagenes/label_HP_bg.png" type="Texture" id=4]
+[ext_resource path="res://Imagenes/fondoo.png" type="Texture" id=3]
+[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Imagenes/oval.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
 Main = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 352.457, 349.806 )
+texture = ExtResource( 3 )
 
 [node name="Mensaje" type="Label" parent="."]
 anchor_left = 0.5
@@ -24,14 +29,14 @@ custom_fonts/font = SubResource( 1 )
 text = "Battle Snake"
 
 [node name="start" type="TouchScreenButton" parent="."]
-position = Vector2( 276.163, 287.321 )
-scale = Vector2( 1.6137, 2.0555 )
-normal = ExtResource( 4 )
+position = Vector2( 278.84, 297.849 )
+scale = Vector2( 1.31193, 1.82365 )
+normal = ExtResource( 5 )
 
 [node name="leave" type="TouchScreenButton" parent="."]
-position = Vector2( 278.953, 371.007 )
-scale = Vector2( 1.5858, 2.13089 )
-normal = ExtResource( 4 )
+position = Vector2( 283.663, 424.147 )
+scale = Vector2( 1.26629, 1.90675 )
+normal = ExtResource( 5 )
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]

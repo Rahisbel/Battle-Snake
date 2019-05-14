@@ -19,5 +19,6 @@ func _on_Enemigo_body_entered(body):
 	emit_signal("col") # colision del disparo con el enemigo
 	$CollisionShape2D.set_deferred("disabled", true) # esto evita que la señal se emita varias veces
 
-
+func _on_VisibilityNotifier2D_screen_exited(): 
+	queue_free() #Elimina los enemigos al salir de la pantalla
 

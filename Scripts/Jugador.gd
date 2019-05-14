@@ -24,7 +24,7 @@ var max_health = 100
 #warning-ignore:unused_class_variable
 var health = max_health
 #warning-ignore:unused_class_variable
-var vida = 3
+var vida = 0
 var left  = false
 var shots = false
 var right = false
@@ -46,6 +46,7 @@ func _process(delta):
  
 	if Input.is_action_just_pressed("ui_up") or shots:
 		emit_signal("disparo", rotation, position,velocity) 
+		
 
 	if velocity.length() > 0:
 		$AnimatedSprite.play()
@@ -59,22 +60,24 @@ func _process(delta):
 	emit_signal("cuerpo",rotation,position,velocity)
    
 	# Evita que se salga de la pantalla
-	
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
 	# Detecta la colisión
 func _on_Jugador_body_entered(body):
-	#hide() esconde el jugador cuando colisiona
+	
 	max_health -= 5;
 	emit_signal("health",max_health)
-#	if max_health == 0:
+	if max_health == 0:
+		emit_signal("vida",max_health)
+	#hide() esconde el jugador cuando colisiona
+	
 #		vida -= 1;
 #		emit_signal("vida",vida)
 #		position.x = 370.776
 #		position.y = 350.711
 #		max_health=100;
-	#emit_signal("hit")  # emite la señal de la colisión
+	#emit_signal("hit)  # emite la señal de la colisión
 	#$CollisionShape2D.set_deferred("disabled", true) # esto evita que la señal se emita varias veces
 
 func start(pos): # cuando comience un juego nuevo
@@ -99,3 +102,5 @@ func _on_shots_released():
 
 func _on_right_released():
 	right = false
+
+

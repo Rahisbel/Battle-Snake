@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
@@ -7,10 +7,15 @@
 [ext_resource path="res://Imagenes/fondoo.png" type="Texture" id=5]
 [ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Imagenes/label_HP_bg.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/pausa.gd" type="Script" id=9]
-[ext_resource path="res://Escenas/MenuPausa.tscn" type="PackedScene" id=10]
-[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Imagenes/left.png" type="Texture" id=8]
+[ext_resource path="res://Imagenes/round.png" type="Texture" id=9]
+[ext_resource path="res://Imagenes/right.png" type="Texture" id=10]
+[ext_resource path="res://Imagenes/pause.png" type="Texture" id=11]
+[ext_resource path="res://Scripts/pausa.gd" type="Script" id=12]
+[ext_resource path="res://Escenas/MenuPausa.tscn" type="PackedScene" id=13]
+[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Imagenes/leiva.png" type="Texture" id=15]
+[ext_resource path="res://Imagenes/restart.png" type="Texture" id=16]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -18,8 +23,8 @@ _data = {
 }
 
 [sub_resource type="DynamicFont" id=2]
-size = 45
-font_data = ExtResource( 11 )
+size = 50
+font_data = ExtResource( 14 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -28,13 +33,13 @@ Disparo = ExtResource( 3 )
 Cuerpo = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 353.318, 350.959 )
+position = Vector2( 353.948, 351.59 )
 scale = Vector2( 1.00857, 1.02562 )
 texture = ExtResource( 5 )
 
 [node name="GUI" parent="." instance=ExtResource( 6 )]
-margin_left = -48.0
-margin_top = -5.0
+margin_left = 51.0
+margin_top = 12.0
 margin_right = 224.0
 margin_bottom = 31.0
 
@@ -63,51 +68,57 @@ wait_time = 0.1
 one_shot = true
 
 [node name="left" type="TouchScreenButton" parent="."]
-position = Vector2( 186.954, 579.671 )
+position = Vector2( 183.017, 550.603 )
+scale = Vector2( 0.751491, 0.744599 )
 normal = ExtResource( 8 )
 
 [node name="shots" type="TouchScreenButton" parent="."]
-position = Vector2( 315.705, 580.476 )
-scale = Vector2( 1, 0.907438 )
-normal = ExtResource( 8 )
+position = Vector2( 318.16, 552.167 )
+scale = Vector2( 0.751491, 0.747682 )
+normal = ExtResource( 9 )
 
 [node name="right" type="TouchScreenButton" parent="."]
-position = Vector2( 435.764, 577.055 )
-normal = ExtResource( 8 )
+position = Vector2( 448.535, 551.084 )
+scale = Vector2( 0.780123, 0.749546 )
+normal = ExtResource( 10 )
 
 [node name="pause" type="TouchScreenButton" parent="."]
 pause_mode = 2
-position = Vector2( 372.484, 12.0983 )
-normal = ExtResource( 8 )
+position = Vector2( 381.572, 5.28203 )
+scale = Vector2( 0.538483, 0.502981 )
+normal = ExtResource( 11 )
 
 [node name="pausa" type="Node" parent="."]
 pause_mode = 2
-script = ExtResource( 9 )
-MenuPausa = ExtResource( 10 )
+editor/display_folded = true
+script = ExtResource( 12 )
+MenuPausa = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="pausa"]
-margin_left = 262.471
-margin_top = 231.713
-margin_right = 423.471
-margin_bottom = 282.713
+margin_left = 284.571
+margin_top = 274.684
+margin_right = 461.571
+margin_bottom = 331.684
 custom_fonts/font = SubResource( 2 )
 text = "PAUSE"
 align = 1
 
 [node name="leave" type="TouchScreenButton" parent="."]
-position = Vector2( 551.292, 11.6882 )
-normal = ExtResource( 8 )
+position = Vector2( 616.643, 9.84582 )
+scale = Vector2( 0.502981, 0.46748 )
+normal = ExtResource( 15 )
 
 [node name="restart" type="TouchScreenButton" parent="."]
-position = Vector2( 463.631, 11.6882 )
-normal = ExtResource( 8 )
+position = Vector2( 465.903, 7.14401 )
+scale = Vector2( 0.520732, 0.485231 )
+normal = ExtResource( 16 )
 
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
 [connection signal="health" from="Jugador" to="GUI" method="_on_Jugador_health"]
 [connection signal="hit" from="Jugador" to="." method="game_over"]
 [connection signal="localizacion" from="Jugador" to="." method="_on_Jugador_localizacion"]
-[connection signal="vida" from="Jugador" to="GUI" method="_on_Jugador_vida"]
+[connection signal="vida" from="Jugador" to="." method="_on_Jugador_vida"]
 [connection signal="timeout" from="TimerEnemigo" to="." method="_on_TimerEnemigo_timeout"]
 [connection signal="timeout" from="Inicio" to="." method="_on_Inicio_timeout"]
 [connection signal="pressed" from="left" to="Jugador" method="_on_left_pressed"]
