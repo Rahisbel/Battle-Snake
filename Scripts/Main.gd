@@ -6,6 +6,7 @@ export (PackedScene) var Cuerpo
 
 var score
 var maxEnem = 4
+var cantidad
 var enemigos = [] #vector de enemigos
 var cantEnemigos = 0 
 var speedE= 200  #Velocidad enemigo
@@ -36,6 +37,7 @@ func _on_TimerEnemigo_timeout(): # Movimiento básico del enemigo
 		enem.linear_velocity = Vector2(rand_range(enem.min_speed, enem.max_speed), 0)
 		enem.linear_velocity = enem.linear_velocity.rotated(direction)
 		cantEnemigos+=1
+		enem.cantidad = cantidad
 
 func _on_Inicio_timeout():
 	$TimerEnemigo.start()
@@ -73,31 +75,17 @@ func _on_Jugador_localizacion(posicion,direccion): # Persecusion
 				elif posicion.y < j.position.y && posicion.x > j.position.x:
 					j.linear_velocity = Vector2(speedE*(porcB/100),-(speedE*(porcA/100)))
 
-func _on_Jugador_cuerpo(direccion, localizacion, velocidad): # prueba, por los momentos no hace nada
-#	if nivel == 1:
-#		print("1")
-#	elif nivel ==2:
-#		print("2")
-#	elif nivel ==2:
-#		print("3") 
-#	elif nivel ==2:
-#		print("4")
-#	elif nivel ==2:
-#		print("5")
-	pass
-
-#func _on_Menu_Inicio():
-#	$TimerEnemigo.start()
-
-func _on_leave_pressed():
+func _on_leave_pressed(): # sale del juego
 	get_tree().quit()
 
-func _on_restart_pressed():
+func _on_restart_pressed(): #reinicio, aún le falta unos detalles
 	new_game()
 
-func _on_Jugador_vida(max_health):
+func _on_Jugador_vida(max_health): #game over
 	if max_health == 0:
-		print("hhh")
-		get_tree().change_scene_to(Cuerpo)
-		#get_tree().paused = true
+		#get_tree().change_scene_to(Cuerpo) se supone que debe de cambiar a otra escena
+		get_tree().paused = true # por los momentos sólo se pausa 
 		
+func _nivel():
+	if cantidad == 0:
+		print("nivel")

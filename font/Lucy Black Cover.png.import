@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gem_2.png-a8112e7ec1260793a0e9d358aa3ab2e8.stex"
+path="res://.import/Lucy Black Cover.png-72eb80cdb54f39f9ee50168d5f3d032e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagenes/gem_2.png"
-dest_files=[ "res://.import/gem_2.png-a8112e7ec1260793a0e9d358aa3ab2e8.stex" ]
+source_file="res://Lucy Black Cover.png"
+dest_files=[ "res://.import/Lucy Black Cover.png-72eb80cdb54f39f9ee50168d5f3d032e.stex" ]
 
 [params]
 

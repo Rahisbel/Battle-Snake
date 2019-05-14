@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Enemigo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Escenas/Disparo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Escenas/Cuerpo.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Imagenes/fondoo.png" type="Texture" id=5]
+[ext_resource path="res://Imagenes/menu.png" type="Texture" id=5]
 [ext_resource path="res://Escenas/GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Imagenes/left.png" type="Texture" id=8]
@@ -12,10 +12,12 @@
 [ext_resource path="res://Imagenes/right.png" type="Texture" id=10]
 [ext_resource path="res://Imagenes/pause.png" type="Texture" id=11]
 [ext_resource path="res://Scripts/pausa.gd" type="Script" id=12]
-[ext_resource path="res://Escenas/MenuPausa.tscn" type="PackedScene" id=13]
-[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://Imagenes/leiva.png" type="Texture" id=15]
-[ext_resource path="res://Imagenes/restart.png" type="Texture" id=16]
+[ext_resource path="res://font/Lucy Black.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Imagenes/off.png" type="Texture" id=14]
+[ext_resource path="res://Imagenes/restart.png" type="Texture" id=15]
+[ext_resource path="res://Imagenes/sonid.png" type="Texture" id=16]
+[ext_resource path="res://Music/melodyloops-preview-on-a-happy-vibe-2m30s.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Scripts/music.gd" type="Script" id=18]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -23,25 +25,26 @@ _data = {
 }
 
 [sub_resource type="DynamicFont" id=2]
-size = 50
-font_data = ExtResource( 14 )
+size = 100
+font_data = ExtResource( 13 )
 
 [node name="Main" type="Node"]
+editor/display_folded = true
 script = ExtResource( 1 )
 Enemigo = ExtResource( 2 )
 Disparo = ExtResource( 3 )
 Cuerpo = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 353.948, 351.59 )
+position = Vector2( 351.627, 352.364 )
 scale = Vector2( 1.00857, 1.02562 )
 texture = ExtResource( 5 )
 
 [node name="GUI" parent="." instance=ExtResource( 6 )]
-margin_left = 51.0
-margin_top = 12.0
-margin_right = 224.0
-margin_bottom = 31.0
+margin_left = 36.0
+margin_top = 7.0
+margin_right = 314.0
+margin_bottom = 49.0
 
 [node name="Jugador" parent="." instance=ExtResource( 7 )]
 position = Vector2( 372.663, 353.456 )
@@ -84,7 +87,7 @@ normal = ExtResource( 10 )
 
 [node name="pause" type="TouchScreenButton" parent="."]
 pause_mode = 2
-position = Vector2( 381.572, 5.28203 )
+position = Vector2( 375.11, 6.57439 )
 scale = Vector2( 0.538483, 0.502981 )
 normal = ExtResource( 11 )
 
@@ -92,26 +95,37 @@ normal = ExtResource( 11 )
 pause_mode = 2
 editor/display_folded = true
 script = ExtResource( 12 )
-MenuPausa = ExtResource( 13 )
 
 [node name="Label" type="Label" parent="pausa"]
-margin_left = 284.571
-margin_top = 274.684
-margin_right = 461.571
-margin_bottom = 331.684
+margin_left = 216.098
+margin_top = 230.269
+margin_right = 480.098
+margin_bottom = 357.269
 custom_fonts/font = SubResource( 2 )
 text = "PAUSE"
 align = 1
 
 [node name="leave" type="TouchScreenButton" parent="."]
-position = Vector2( 616.643, 9.84582 )
-scale = Vector2( 0.502981, 0.46748 )
-normal = ExtResource( 15 )
+position = Vector2( 618.228, 5.2611 )
+scale = Vector2( 0.513078, 0.517963 )
+normal = ExtResource( 14 )
 
 [node name="restart" type="TouchScreenButton" parent="."]
-position = Vector2( 465.903, 7.14401 )
+position = Vector2( 460.734, 7.14401 )
 scale = Vector2( 0.520732, 0.485231 )
+normal = ExtResource( 15 )
+
+[node name="music" type="TouchScreenButton" parent="."]
+pause_mode = 2
+position = Vector2( 541.499, 6.4618 )
+scale = Vector2( 0.515365, 0.515365 )
 normal = ExtResource( 16 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 17 )
+autoplay = true
+script = ExtResource( 18 )
 
 [connection signal="cuerpo" from="Jugador" to="." method="_on_Jugador_cuerpo"]
 [connection signal="disparo" from="Jugador" to="." method="_on_Jugador_disparo"]
@@ -131,3 +145,5 @@ normal = ExtResource( 16 )
 [connection signal="released" from="pause" to="pausa" method="_on_pause_released"]
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
 [connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="music" to="AudioStreamPlayer" method="_on_music_pressed"]
+[connection signal="released" from="music" to="AudioStreamPlayer" method="_on_music_released"]

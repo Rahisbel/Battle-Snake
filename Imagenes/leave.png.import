@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/label_HP_bg.png-d58526f8322b677513bf78cbf6c6c622.stex"
+path="res://.import/leave.png-b9e74a6de21a99f8b5da1b84e1f42fe0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imagenes/label_HP_bg.png"
-dest_files=[ "res://.import/label_HP_bg.png-d58526f8322b677513bf78cbf6c6c622.stex" ]
+source_file="res://Imagenes/leave.png"
+dest_files=[ "res://.import/leave.png-b9e74a6de21a99f8b5da1b84e1f42fe0.stex" ]
 
 [params]
 

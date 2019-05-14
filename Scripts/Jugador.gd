@@ -34,10 +34,8 @@ func _ready():
    
 func _process(delta):
 	direccion_rot = 0  
-      # Velocidad del jugador
-	velocity = Vector2(0,speed).rotated(rotation)
+	velocity = Vector2(0,speed).rotated(rotation)  # Velocidad del jugador
 
-	#esto es de prueba, se supone que hay que usar el touch
 	if Input.is_action_pressed("ui_right") or right: # rotacion a la der
 		direccion_rot+= 1  
 	
@@ -46,7 +44,6 @@ func _process(delta):
  
 	if Input.is_action_just_pressed("ui_up") or shots:
 		emit_signal("disparo", rotation, position,velocity) 
-		
 
 	if velocity.length() > 0:
 		$AnimatedSprite.play()
@@ -57,34 +54,24 @@ func _process(delta):
 	rotation+=direccion_rot*velocidad_rot*delta
 	position += velocity * delta
 	emit_signal("localizacion",position,rotation)
-	emit_signal("cuerpo",rotation,position,velocity)
    
 	# Evita que se salga de la pantalla
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
-	# Detecta la colisión
+	# Detecta la colisión del enemigo
 func _on_Jugador_body_entered(body):
-	
 	max_health -= 5;
 	emit_signal("health",max_health)
 	if max_health == 0:
-		emit_signal("vida",max_health)
-	#hide() esconde el jugador cuando colisiona
-	
-#		vida -= 1;
-#		emit_signal("vida",vida)
-#		position.x = 370.776
-#		position.y = 350.711
-#		max_health=100;
-	#emit_signal("hit)  # emite la señal de la colisión
-	#$CollisionShape2D.set_deferred("disabled", true) # esto evita que la señal se emita varias veces
+		emit_signal("vida",max_health) # esto emite una señal al main para saber que ya perdió
 
 func start(pos): # cuando comience un juego nuevo
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
 
+# funciones del touch
 func _on_left_pressed():
 	left = true
 

@@ -11,12 +11,12 @@ func mensaje(text):
 	$Mensaje.show() 
 	pass
 
-func game_over():
-	mensaje("GAME OVER")
-	#yield($tiempo,"timeout")
-	$start.show()
-	$Mensaje.text = "Battle Snake"
-	$Mensaje.show()
+#func game_over(): 
+#	mensaje("GAME OVER")
+#	#yield($tiempo,"timeout")
+#	$start.show()
+#	$Mensaje.text = "Battle Snake"
+#	$Mensaje.show()
 	
 func _on_start_pressed():
 	get_tree().change_scene_to(Main)

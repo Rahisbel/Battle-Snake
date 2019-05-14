@@ -1,13 +1,23 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Escenas/Main.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Imagenes/fondoo.png" type="Texture" id=3]
-[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Imagenes/oval.png" type="Texture" id=5]
+[ext_resource path="res://Imagenes/menu.png" type="Texture" id=3]
+[ext_resource path="res://font/Lucy Black.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Imagenes/dire.png" type="Texture" id=5]
+[ext_resource path="res://Imagenes/off.png" type="Texture" id=6]
+[ext_resource path="res://Imagenes/xc.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 60
+size = 120
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
 font_data = ExtResource( 4 )
 
 [node name="Menu" type="CanvasLayer"]
@@ -15,28 +25,52 @@ script = ExtResource( 1 )
 Main = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 352.457, 349.806 )
+position = Vector2( 354.907, 348.581 )
+scale = Vector2( 1.01758, 1.00293 )
 texture = ExtResource( 3 )
 
 [node name="Mensaje" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -204.918
-margin_top = 126.052
-margin_right = 194.082
-margin_bottom = 194.052
+margin_left = -267.034
+margin_top = 63.6948
+margin_right = 241.966
+margin_bottom = 216.695
 custom_fonts/font = SubResource( 1 )
 text = "Battle Snake"
 
 [node name="start" type="TouchScreenButton" parent="."]
-position = Vector2( 278.84, 297.849 )
-scale = Vector2( 1.31193, 1.82365 )
+position = Vector2( 263.632, 281.775 )
+rotation = 13.6502
+scale = Vector2( 0.797005, 0.80633 )
 normal = ExtResource( 5 )
 
+[node name="Label" type="Label" parent="start"]
+visible = false
+margin_left = -119.838
+margin_top = -93.024
+margin_right = -52.8383
+margin_bottom = -41.024
+custom_fonts/font = SubResource( 2 )
+text = "Start"
+
 [node name="leave" type="TouchScreenButton" parent="."]
-position = Vector2( 283.663, 424.147 )
-scale = Vector2( 1.26629, 1.90675 )
-normal = ExtResource( 5 )
+position = Vector2( 302.12, 431.128 )
+scale = Vector2( 0.792222, 0.794761 )
+normal = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="leave"]
+visible = false
+margin_left = 27.4916
+margin_top = 3.88938
+margin_right = 102.492
+margin_bottom = 55.8894
+custom_fonts/font = SubResource( 3 )
+text = "Leave"
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 543.252, 267.961 )
+texture = ExtResource( 7 )
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="leave" to="." method="_on_leave_pressed"]
